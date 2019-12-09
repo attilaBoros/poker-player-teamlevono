@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '2.8';
+    return '2.9';
   }
 
   static betRequest(gameState, bet) {
@@ -24,6 +24,13 @@ class Player {
     const enemyTeam = this.getEnemyTeam(gameState);
 
     const allCards = this.getAllCards(gameState, ourCards);
+    for (let i = 0; i < allCards.length; i++) {
+        if (allCards[i] === "J") allCards[i] = 11;
+        else if (allCards[i] === "Q") allCards[i] = 12;
+        else if (allCards[i] === "K") allCards[i] = 13;
+        else if (allCards[i] === "A") allCards[i] = 14;
+    }
+
 
 
     if (this.isDrill(allCards)) {
@@ -36,7 +43,7 @@ class Player {
     /*else if(ourCards[0] === "J" || ourCards[0] === "Q" || ourCards[0] === "K" || ourCards[0] === "A"){
       bet(currentBuyIn + minimumR)
     }
-    else if(ourCards[1] === "J" || ourCards[1] === "Q" || ourCards[1] === "K" || ourCards[1] === "A") {
+    else if(cards[1] === "J" || cards[1] === "Q" || cards[1] === "K" || cards[1] === "A") {
       bet(currentBuyIn + minimumR)
     }*/
     else {
@@ -46,12 +53,6 @@ class Player {
   }
 
   static isStraight(allCards) {
-    for (let i = 0; i < allCards.length; i++) {
-      if (allCards[i] === "J") allCards[i] = 11;
-      else if (allCards[i] === "Q") allCards[i] = 12;
-      else if (allCards[i] === "K") allCards[i] = 13;
-      else if (allCards[i] === "A") allCards[i] = 14;
-    }
     allCards.sort();
     console.log(allCards);
   }
@@ -117,6 +118,10 @@ class Player {
         return player;
       }
     }
+  }
+
+  static isFlush(gameState) {
+
   }
 
   static showdown(gameState) {
