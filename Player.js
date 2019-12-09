@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.6';
+    return '1.7';
   }
 
   static betRequest(gameState, bet) {
@@ -19,7 +19,7 @@ class Player {
         console.log(ourStack);
       }
     }
-    bet(ourStack);
+    bet(0);
     let holeCardsObject;
     for (const player of gameState.players) {
       if (player["name"] === "TeamLevono") {
