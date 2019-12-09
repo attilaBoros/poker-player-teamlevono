@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '3.2';
+    return '3.3';
   }
 
   static betRequest(gameState, bet) {
@@ -40,7 +40,8 @@ class Player {
       if (ourCards[0] > 10) {
         bet(ourStack);
       }
-      bet(currentBuyIn + minimumR + 5);
+      console.log("alacsony párunk van vazze:" + ourCards[0]);
+      bet(currentBuyIn + minimumR);
 
     } else if (this.isRow(allCards)) {
       console.log("row is true: " + allCards.toString());
