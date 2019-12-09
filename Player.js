@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '2.7';
+    return '2.8';
   }
 
   static betRequest(gameState, bet) {
@@ -16,29 +16,29 @@ class Player {
 
     let holeCards = this.getHoleCards(gameState);
 
-    let cards = [];
+    let ourCards = [];
     for (const holeCard of holeCards) {
-      cards.push(holeCard["rank"]);
+      ourCards.push(holeCard["rank"]);
     }
 
     const enemyTeam = this.getEnemyTeam(gameState);
 
-    const allCards = this.getAllCards(gameState, cards);
+    const allCards = this.getAllCards(gameState, ourCards);
 
 
     if (this.isDrill(allCards)) {
-      console.log("drill is true: " + allCards);
+      console.log("drill is true: " + allCards.toString());
       bet(ourStack);
     }
-    else if (cards[0] === cards[1]) {
+    else if (ourCards[0] === ourCards[1]) {
       bet(currentBuyIn + minimumR + 5);
     }
-    else if(cards[0] === "J" || cards[0] === "Q" || cards[0] === "K" || cards[0] === "A"){
+    /*else if(ourCards[0] === "J" || ourCards[0] === "Q" || ourCards[0] === "K" || ourCards[0] === "A"){
       bet(currentBuyIn + minimumR)
     }
-    else if(cards[1] === "J" || cards[1] === "Q" || cards[1] === "K" || cards[1] === "A") {
+    else if(ourCards[1] === "J" || ourCards[1] === "Q" || ourCards[1] === "K" || ourCards[1] === "A") {
       bet(currentBuyIn + minimumR)
-    }
+    }*/
     else {
       bet(0);
     }
