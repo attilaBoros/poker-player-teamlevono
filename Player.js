@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.1';
+    return '1.2';
   }
 
   static betRequest(gameState, bet) {
@@ -12,8 +12,15 @@ class Player {
 
     const currentBuyIn = parseInt(attribute);
     const minimumR = parseInt(minimumRaise);
-
     bet(currentBuyIn + minimumR);
+    for (const player of gameState.players) {
+      if (player["name"] === "TeamLevono") {
+        const ourStack = player["stack"];
+        console.log(ourStack);
+      }
+        }
+
+
   }
 
   static showdown(gameState) {
