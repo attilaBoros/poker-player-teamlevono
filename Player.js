@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.9';
+    return '2.1';
   }
 
   static betRequest(gameState, bet) {
@@ -16,7 +16,22 @@ class Player {
 
     let holeCards = this.getHoleCards(gameState);
 
-    bet(0);
+    let cards = [];
+    for (const holeCard of holeCards) {
+      cards.push(holeCard["rank"]);
+    }
+
+    if (gameState.community_cards != null) {
+      console.log(gameState.community_cards);
+    }
+
+    const enemyTeam = this.getEnemyTeam(gameState);
+    if (enemyTeam["bet"] > 0) {
+      bet(parseInt(enemyTeam["bet"]) + 5)
+    }
+    else {
+      bet(0);
+    }
 
   }
 
@@ -43,6 +58,14 @@ class Player {
         ourStack = player["stack"];
         console.log("our_stack: " + ourStack);
         return ourStack;
+      }
+    }
+  }
+
+  static getEnemyTeam(gameState) {
+    for (const player of gameState.players) {
+      if (player["name"] === "Monumentalis Nyerogep") {
+        return player;
       }
     }
   }
