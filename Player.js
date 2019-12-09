@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '2.3';
+    return '2.4';
   }
 
   static betRequest(gameState, bet) {
@@ -30,6 +30,7 @@ class Player {
       bet(currentBuyIn + minimumR + 5);
     }
     else if (this.isDrill(allCards)) {
+      console.log("drill is true: " + allCards);
       bet(ourStack);
     }
     else {
