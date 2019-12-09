@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.0';
+    return '1.1';
   }
 
   static betRequest(gameState, bet) {
@@ -11,8 +11,6 @@ class Player {
     console.log("current_buy_in:" + attribute);
 
     const currentBuyIn = parseInt(attribute);
-    const holeCards = JSON.parse(gameState.hole_cards);
-    console.log("hole_cards: " + holeCards);
     const minimumR = parseInt(minimumRaise);
 
     bet(currentBuyIn + minimumR);
