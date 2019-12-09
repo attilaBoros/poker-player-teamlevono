@@ -20,17 +20,12 @@ class Player {
     for (const holeCard of holeCards) {
       ourCards.push(holeCard["rank"]);
     }
+    ourCards = this.changeCardsToNumbers(ourCards);
 
     const enemyTeam = this.getEnemyTeam(gameState);
 
-    const allCards = this.getAllCards(gameState, ourCards);
-    for (let i = 0; i < allCards.length; i++) {
-      if (allCards[i] === "J") allCards[i] = 11;
-      else if (allCards[i] === "Q") allCards[i] = 12;
-      else if (allCards[i] === "K") allCards[i] = 13;
-      else if (allCards[i] === "A") allCards[i] = 14;
-      else parseInt(allCards[i]);
-    }
+    let allCards = this.getAllCards(gameState, ourCards);
+    allCards = this.changeCardsToNumbers(allCards);
 
 
     if (this.isDrill(allCards)) {
@@ -57,6 +52,17 @@ class Player {
       bet(0);
     }
 
+  }
+
+  static changeCardsToNumbers(cards) {
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i] === "J") cards[i] = 11;
+      else if (cards[i] === "Q") cards[i] = 12;
+      else if (cards[i] === "K") cards[i] = 13;
+      else if (cards[i] === "A") cards[i] = 14;
+      else parseInt(cards[i]);
+    }
+    return cards;
   }
 
   static isStraight(allCards) {
