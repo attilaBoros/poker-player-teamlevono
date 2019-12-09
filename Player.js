@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.5';
+    return '1.6';
   }
 
   static betRequest(gameState, bet) {
@@ -24,8 +24,12 @@ class Player {
     for (const player of gameState.players) {
       if (player["name"] === "TeamLevono") {
         holeCardsObject = player["hole_cards"];
-        console.log(Object.values(holeCardsObject));
+        break;
       }
+    }
+
+    for (const holeCard of holeCardsObject) {
+      console.log(holeCard);
     }
 
   }
