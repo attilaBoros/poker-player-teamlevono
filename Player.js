@@ -21,13 +21,9 @@ class Player {
       cards.push(holeCard["rank"]);
     }
 
-    if (gameState.community_cards != null) {
-      console.log(gameState.community_cards);
-    }
-
     const enemyTeam = this.getEnemyTeam(gameState);
-    if (enemyTeam["bet"] > 0) {
-      bet(parseInt(enemyTeam["bet"]) + 5)
+    if (cards[0] === cards[1]) {
+      bet(ourStack);
     }
     else {
       bet(0);
