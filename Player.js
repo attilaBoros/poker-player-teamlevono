@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.8';
+    return '1.9';
   }
 
   static betRequest(gameState, bet) {
@@ -30,9 +30,9 @@ class Player {
     }
     let holeCards = [];
     for (const holeCard of holeCardsObject) {
+      console.log(holeCard);
       holeCards.push(holeCard);
     }
-    console.log("hole_cards: " + holeCards);
     return holeCards;
   }
 
