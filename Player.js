@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '2.9';
+    return '3.0';
   }
 
   static betRequest(gameState, bet) {
@@ -29,6 +29,7 @@ class Player {
         else if (allCards[i] === "Q") allCards[i] = 12;
         else if (allCards[i] === "K") allCards[i] = 13;
         else if (allCards[i] === "A") allCards[i] = 14;
+        else parseInt(allCards[i]);
     }
 
 
