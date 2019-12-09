@@ -48,7 +48,9 @@ class Player {
   }
 
   static showdown(gameState) {
+    console.log("showdown: ");
     this.comcards(gameState);
+
 
 
   }
