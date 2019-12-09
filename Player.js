@@ -39,6 +39,17 @@ class Player {
 
   }
 
+  static isStraight(allCards) {
+    for (let i = 0; i < allCards.length; i++) {
+      if (allCards[i] === "J") allCards[i] = 11;
+      else if (allCards[i] === "Q") allCards[i] = 12;
+      else if (allCards[i] === "K") allCards[i] = 13;
+      else if (allCards[i] === "A") allCards[i] = 14;
+    }
+    allCards.sort();
+    console.log(allCards);
+  }
+
   static isDrill(allCards) {
     let counter = 0;
     for (let i = 0; i < allCards.length; i++) {
