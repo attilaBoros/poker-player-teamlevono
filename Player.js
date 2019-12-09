@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.9';
+    return '2.0';
   }
 
   static betRequest(gameState, bet) {
@@ -48,6 +48,18 @@ class Player {
   }
 
   static showdown(gameState) {
+    this.comcards(gameState);
+
+
+  }
+
+
+
+  static comcards(gameState) {
+    const comCards = gameState.community_cards;
+    for (const card of comCards) {
+      console.log(card["rank"] + "--" + card["suit"])
+    }
   }
 }
 
