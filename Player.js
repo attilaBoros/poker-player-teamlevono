@@ -33,6 +33,12 @@ class Player {
     else if (cards[0] === cards[1]) {
       bet(currentBuyIn + minimumR + 5);
     }
+    else if(cards[0] === "J" || cards[0] === "Q" || cards[0] === "K" || cards[0] === "A"){
+      bet(currentBuyIn + minimumR)
+    }
+    else if(cards[1] === "J" || cards[1] === "Q" || cards[1] === "K" || cards[1] === "A") {
+      bet(currentBuyIn + minimumR)
+    }
     else {
       bet(0);
     }
@@ -105,8 +111,6 @@ class Player {
   static showdown(gameState) {
     console.log("showdown: ");
     this.comcards(gameState);
-
-
 
   }
 
