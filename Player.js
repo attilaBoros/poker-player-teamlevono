@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '3.0';
+    return '3.1';
   }
 
   static betRequest(gameState, bet) {
@@ -39,6 +39,9 @@ class Player {
       bet(ourStack);
     }
     else if (ourCards[0] === ourCards[1]) {
+      if (ourCards[0] > 10) {
+        bet(ourStack);
+      }
       bet(currentBuyIn + minimumR + 5);
     }
     /*else if(ourCards[0] === "J" || ourCards[0] === "Q" || ourCards[0] === "K" || ourCards[0] === "A"){
