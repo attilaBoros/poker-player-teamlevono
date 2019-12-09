@@ -31,7 +31,7 @@ class Player {
     }
     else if (this.isDrill(allCards)) {
       console.log("drill is true: " + allCards);
-      bet(ourStack);
+      bet(parseInt(ourStack));
     }
     else {
       bet(0);
