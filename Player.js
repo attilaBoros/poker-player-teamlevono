@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '2.2';
+    return '2.3';
   }
 
   static betRequest(gameState, bet) {
@@ -22,13 +22,48 @@ class Player {
     }
 
     const enemyTeam = this.getEnemyTeam(gameState);
+
+    const allCards = this.getAllCards(gameState, cards);
+
+
     if (cards[0] === cards[1]) {
+      bet(currentBuyIn + minimumR + 5);
+    }
+    else if (this.isDrill(allCards)) {
       bet(ourStack);
     }
     else {
       bet(0);
     }
 
+  }
+
+  static isDrill(allCards) {
+    let counter = 0;
+    for (let i = 0; i < allCards.length; i++) {
+      for (let j = 0; j < allCards.length; i++) {
+        if (i === j) {
+          continue;
+        }
+        if (allCards[i] === allCards[j]) {
+          counter++;
+        }
+      }
+    }
+    return counter >= 3;
+
+  }
+
+  static getAllCards(gameState, cards) {
+    const allCards = [];
+
+    for (const card of this.comcards(gameState)) {
+      allCards.push(card["rank"]);
+    }
+    for (const card of cards) {
+      allCards.push(card["rank"]);
+    }
+    return allCards;
   }
 
   static getHoleCards(gameState) {
@@ -78,9 +113,12 @@ class Player {
 
   static comcards(gameState) {
     const comCards = gameState.community_cards;
+    let cards = [];
     for (const card of comCards) {
       console.log(card["rank"] + "--" + card["suit"])
+      cards.push(card["rank"]);
     }
+    return cards;
   }
 }
 
