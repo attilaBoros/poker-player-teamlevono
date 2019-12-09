@@ -28,10 +28,10 @@ class Player {
 
     if (this.isDrill(allCards)) {
       console.log("drill is true: " + allCards);
-      bet(0);
+      bet(ourStack);
     }
     else if (cards[0] === cards[1]) {
-      bet(0);
+      bet(currentBuyIn + minimumR + 5);
     }
     else {
       bet(0);
@@ -42,7 +42,7 @@ class Player {
   static isDrill(allCards) {
     let counter = 0;
     for (let i = 0; i < allCards.length; i++) {
-      for (let j = 0; j < allCards.length; i++) {
+      for (let j = 0; j < allCards.length; j++) {
         if (i === j) {
           continue;
         }
