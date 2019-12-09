@@ -12,7 +12,7 @@ class Player {
 
     const currentBuyIn = parseInt(attribute);
     const minimumR = parseInt(minimumRaise);
-    const ourStack = this.getOurStack(gameState);
+    const ourStack = parseInt(this.getOurStack(gameState));
 
     let holeCards = this.getHoleCards(gameState);
 
@@ -31,7 +31,7 @@ class Player {
     }
     else if (this.isDrill(allCards)) {
       console.log("drill is true: " + allCards);
-      bet(parseInt(ourStack));
+      bet(ourStack);
     }
     else {
       bet(0);
