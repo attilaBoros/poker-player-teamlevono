@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '3.1';
+    return '3.2';
   }
 
   static betRequest(gameState, bet) {
@@ -149,10 +149,10 @@ class Player {
 
 
   static isRow(allCards) {
+    allCards.sort();
     for (let card of allCards) {
-      Array.sort(allCards);
       let counter = 0;
-      for (let i = 0; i < allCards.length; i++) {
+      for (let i = 0; i < allCards.length - 1; i++) {
         if (allCards[i] === allCards[i + 1]) {
           counter++;
         }
