@@ -4,11 +4,11 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
+    bet(0);
+
     console.log(gameState);
     let attribute = gameState.currentBuyIn;
     console.log("current_buy_in:" + attribute);
-
-    bet(0);
   }
 
   static showdown(gameState) {
