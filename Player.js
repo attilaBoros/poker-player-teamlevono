@@ -71,6 +71,20 @@ class Player {
   }
 
   static showdown(gameState) {
+    console.log("showdown: ");
+    this.comcards(gameState);
+
+
+
+  }
+
+
+
+  static comcards(gameState) {
+    const comCards = gameState.community_cards;
+    for (const card of comCards) {
+      console.log(card["rank"] + "--" + card["suit"])
+    }
   }
 }
 
