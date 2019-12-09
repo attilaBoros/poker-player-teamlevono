@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.4';
+    return '1.5';
   }
 
   static betRequest(gameState, bet) {
@@ -20,10 +20,13 @@ class Player {
       }
     }
     bet(ourStack);
-
-    const holeCardsObject = gameState.hole_cards;
-    const holeCards = Object.values(holeCardsObject);
-    console.log(holeCards);
+    let holeCardsObject;
+    for (const player of gameState.players) {
+      if (player["name"] === "TeamLevono") {
+        holeCardsObject = player["hole_cards"];
+        console.log(Object.values(holeCardsObject));
+      }
+    }
 
   }
 
