@@ -26,12 +26,12 @@ class Player {
     const allCards = this.getAllCards(gameState, cards);
 
 
-    if (cards[0] === cards[1]) {
-      bet(currentBuyIn + minimumR + 5);
-    }
-    else if (this.isDrill(allCards)) {
+    if (this.isDrill(allCards)) {
       console.log("drill is true: " + allCards);
-      bet(ourStack);
+      bet(0);
+    }
+    else if (cards[0] === cards[1]) {
+      bet(0);
     }
     else {
       bet(0);
@@ -88,7 +88,7 @@ class Player {
     for (const player of gameState.players) {
       if (player["name"] === "TeamLevono") {
         ourStack = player["stack"];
-        console.log("our_stack: " + ourStack);
+        console.log("our_stack: " + ourStack + " type: " + typeof(ourStack));
         return ourStack;
       }
     }
