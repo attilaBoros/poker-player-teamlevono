@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.0';
+    return '1.4';
   }
 
   static betRequest(gameState, bet) {
@@ -10,14 +10,21 @@ class Player {
     let minimumRaise = gameState.minimum_raise;
     console.log("current_buy_in:" + attribute);
 
-
     const currentBuyIn = parseInt(attribute);
-    const holeCards = JSON.parse(gameState.hole_cards);
-
-    console.log("hole_cards: " + holeCards);
     const minimumR = parseInt(minimumRaise);
+    let ourStack = 0;
+    for (const player of gameState.players) {
+      if (player["name"] === "TeamLevono") {
+        ourStack = player["stack"];
+        console.log(ourStack);
+      }
+    }
+    bet(ourStack);
 
-    bet(currentBuyIn + minimumR);
+    const holeCardsObject = gameState.hole_cards;
+    const holeCards = Object.values(holeCardsObject);
+    console.log(holeCards);
+
   }
 
   static showdown(gameState) {
