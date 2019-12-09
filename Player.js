@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '1.3';
+    return '1.4';
   }
 
   static betRequest(gameState, bet) {
@@ -21,6 +21,9 @@ class Player {
     }
     bet(ourStack);
 
+    const holeCardsObject = gameState.hole_cards;
+    const holeCards = Object.values(holeCardsObject);
+    console.log(holeCards);
 
   }
 
